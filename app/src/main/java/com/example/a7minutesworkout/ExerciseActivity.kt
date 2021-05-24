@@ -3,15 +3,24 @@ package com.example.a7minutesworkout
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.CountDownTimer
-import android.widget.ProgressBar
-import android.widget.TextView
-import android.widget.Toast
+import android.view.View
+import android.widget.*
 
 
 class ExerciseActivity : AppCompatActivity() {
 
+    // Variables for the count down timer
     private var restTimer: CountDownTimer? = null
     private var restProgress = 0
+
+    // Variables for the exercise count down timer
+    private var exerciseTimer: CountDownTimer? = null
+    private var exerciseProgress = 0
+    private var exerciseTimerDuration: Long = 30
+
+    // Variables to display the moves
+    private var exerciseList: ArrayList<ExerciseModel>? = null
+    private var currentExercise = -1
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -25,11 +34,14 @@ class ExerciseActivity : AppCompatActivity() {
             onBackPressed()
         }
 
-        setRestProgressBar()
+        // Set Up the Exercises
+        exerciseList = Constants.defaultExerciseList()
+
+        setUpRestView()
     }
 
     override fun onDestroy() {
-        if(restTimer != null) {
+        if (restTimer != null) {
             restTimer!!.cancel()
             restProgress = 0
         }
@@ -49,17 +61,69 @@ class ExerciseActivity : AppCompatActivity() {
             }
 
             override fun onFinish() {
-                Toast.makeText(
-                    this@ExerciseActivity,
-                    "Exercise starts...",
-                    Toast.LENGTH_SHORT
-                ).show()
+                // When the timer is finished move to the next exercise
+                currentExercise++
+                setUpExerciseView()
             }
         }.start()
     }
 
+    // Exercise Bar Timer
+    private fun setExerciseProgressBar() {
+        findViewById<ProgressBar>(R.id.exerciseProgressBar).progress = exerciseProgress
+
+        exerciseTimer = object : CountDownTimer(exerciseTimerDuration * 1000, 1000) {
+            override fun onTick(millisUntilFinished: Long) {
+                exerciseProgress++
+                findViewById<ProgressBar>(R.id.exerciseProgressBar).progress =
+                    exerciseTimerDuration.toInt() - exerciseProgress
+                findViewById<TextView>(R.id.exerciseProgressBarTimer).text =
+                    (exerciseTimerDuration.toInt() - exerciseProgress).toString()
+            }
+
+            override fun onFinish() {
+                if (currentExercise < exerciseList?.size!! - 1) {
+                    setUpRestView()
+                } else {
+                    Toast.makeText(
+                        this@ExerciseActivity,
+                        "You have successfully finished the 7 minutes workout!!",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                }
+            }
+        }.start()
+    }
+
+    // Function to set up the exercises
+    private fun setUpExerciseView() {
+        // Move the rest view away bring the Exercise View on the screen
+        findViewById<LinearLayout>(R.id.restViewCounter).visibility = View.GONE
+        findViewById<LinearLayout>(R.id.exerciseView).visibility = View.VISIBLE
+
+
+        if (exerciseTimer != null) {
+            exerciseTimer!!.cancel()
+            exerciseProgress = 0
+        }
+
+        // Set Exercises
+        findViewById<ImageView>(R.id.exerciseImage).setImageResource(exerciseList!![currentExercise].getImage())
+        findViewById<TextView>(R.id.exerciseNameTextView).text =
+            exerciseList!![currentExercise].getName()
+
+        // Prepare the Progress Bar
+        setExerciseProgressBar()
+    }
+
+    // Function that sets up the rest view
     private fun setUpRestView() {
-        if(restTimer != null) {
+        // Move the exercise view away bring the rest view back
+        findViewById<LinearLayout>(R.id.exerciseView).visibility = View.GONE
+        findViewById<LinearLayout>(R.id.restViewCounter).visibility = View.VISIBLE
+
+
+        if (restTimer != null) {
             restTimer!!.cancel()
             restProgress = 0
         }

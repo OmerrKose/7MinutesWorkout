@@ -15,6 +15,7 @@
         android:theme="@style/ToolbarTheme"
         app:titleTextColor="@color/colorPrimary" />
 
+    <!--Before Exercise View and Count Down-->
     <LinearLayout
         android:id="@+id/restViewCounter"
         android:layout_width="match_parent"
@@ -62,10 +63,81 @@
                     android:id="@+id/progressBarTimer"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:text="@string/_10"
                     android:textColor="#FFFFFF"
                     android:textSize="25sp"
-                    android:textStyle="bold"
-                    android:text="10" />
+                    android:textStyle="bold" />
+
+            </LinearLayout>
+
+        </FrameLayout>
+
+    </LinearLayout>
+
+    <!--After Exercise and Count Down-->
+    <LinearLayout
+        android:id="@+id/exerciseView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/exerciseActivityToolbar"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:visibility="gone"
+        tools:visibiltiy="gone">
+
+        <ImageView
+            android:id="@+id/exerciseImage"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:contentDescription="@string/image"
+            android:scaleType="fitXY"
+            android:src="@drawable/ic_jumping_jacks"/>
+
+        <TextView
+            android:id="@+id/exerciseNameTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/exercise_name"
+            android:textColor="@color/colorAccent"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <FrameLayout
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginBottom="15dp"
+            android:background="@drawable/item_circular_color_accent_border">
+
+            <ProgressBar
+                android:id="@+id/exerciseProgressBar"
+                style="?android:attr/progressBarStyleHorizontal"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_gravity="center"
+                android:background="@drawable/circular_progress_gray"
+                android:indeterminate="false"
+                android:max="30"
+                android:progress="100"
+                android:progressDrawable="@drawable/circular_progress_bar"
+                android:rotation="-90" />
+
+            <LinearLayout
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_gravity="center"
+                android:background="@drawable/item_circular_color_accent_background"
+                android:gravity="center">
+
+                <TextView
+                    android:id="@+id/exerciseProgressBarTimer"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/_30"
+                    android:textColor="#FFFFFF"
+                    android:textSize="25sp"
+                    android:textStyle="bold" />
 
             </LinearLayout>
 

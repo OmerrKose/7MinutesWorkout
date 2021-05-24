@@ -4,4 +4,7 @@
     <string name="image">image</string>
     <string name="main_page_start_button_text">Start</string>
     <string name="get_ready_for">GET READY FOR</string>
+    <string name="exercise_name">Exercise Name</string>
+    <string name="_30">30</string>
+    <string name="_10">10</string>
 </resources>

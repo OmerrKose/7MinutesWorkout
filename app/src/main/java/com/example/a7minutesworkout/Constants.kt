@@ -18,7 +18,7 @@ class Constants {
 
             val wallSit = ExerciseModel(
                 2,
-                "Wall Sİt",
+                "Wall Sit",
                 R.drawable.ic_wall_sit,
                 isCompleted = false,
                 isSelected = false

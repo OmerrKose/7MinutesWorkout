@@ -80,6 +80,7 @@ class ExerciseActivity : AppCompatActivity() {
             }
 
             override fun onFinish() {
+                // If there is still exercise
                 if (currentExercise < exerciseList?.size!! - 1) {
                     setUpRestView()
                 } else {

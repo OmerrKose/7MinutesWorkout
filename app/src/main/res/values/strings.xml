@@ -8,4 +8,8 @@
     <string name="_30">30</string>
     <string name="_10">10</string>
     <string name="upcoming_exercise">Upcoming Exercise</string>
+    <string name="end">END</string>
+    <string name="congratulations">Congratulations!</string>
+    <string name="finish_text">You have finished the workout!</string>
+    <string name="finish">Finish</string>
 </resources>

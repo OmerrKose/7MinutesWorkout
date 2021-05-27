@@ -16,11 +16,14 @@
         app:titleTextColor="@color/colorPrimary" />
 
     <!--Before Exercise View and Count Down-->
+
+    <!--After Exercise and Count Down-->
     <LinearLayout
         android:id="@+id/restViewCounter"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@+id/exerciseActivityToolbar"
+        android:layout_marginTop="1dp"
         android:gravity="center"
         android:orientation="vertical"
         android:visibility="visible">
@@ -92,7 +95,6 @@
 
     </LinearLayout>
 
-    <!--After Exercise and Count Down-->
     <LinearLayout
         android:id="@+id/exerciseView"
         android:layout_width="match_parent"

@@ -14,4 +14,5 @@
     <color name="highLighted">#C4C4C4</color>
     <color name="toolbarColorControlNormal">#000000</color>
     <color name="progressGrey">#D4DDE7</color>
+    <color name="yellow">#FFD700</color>
 </resources>

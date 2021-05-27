@@ -1,5 +1,7 @@
-package com.example.a7minutesworkout
+package com.example.a7minutesWorkout
 
+import android.media.MediaPlayer
+import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.CountDownTimer
@@ -7,6 +9,10 @@ import android.speech.tts.TextToSpeech
 import android.util.Log
 import android.view.View
 import android.widget.*
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import com.example.a7minutesworkout.R
+import java.lang.Exception
 import java.util.*
 import kotlin.collections.ArrayList
 
@@ -27,6 +33,9 @@ class ExerciseActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
     private var currentExercise = -1
 
     private var txtToSpeech: TextToSpeech? = null
+    private var player: MediaPlayer? = null
+
+    private var exerciseAdapter: ExerciseStatusAdapter? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -42,9 +51,13 @@ class ExerciseActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
 
         txtToSpeech = TextToSpeech(this, this)
 
+
+
         // Set Up the Exercises
         exerciseList = Constants.defaultExerciseList()
         setUpRestView()
+
+        setUpExerciseRecyclerView()
     }
 
     override fun onDestroy() {
@@ -53,15 +66,19 @@ class ExerciseActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
             restProgress = 0
         }
 
-        if(exerciseTimer != null) {
+        if (exerciseTimer != null) {
             exerciseTimer!!.cancel()
             exerciseProgress = 0
         }
 
         // Stop text to speech if it is not closed
-        if(txtToSpeech != null) {
+        if (txtToSpeech != null) {
             txtToSpeech!!.stop()
             txtToSpeech!!.shutdown()
+        }
+
+        if (player != null) {
+            player!!.stop()
         }
 
         super.onDestroy()
@@ -140,10 +157,18 @@ class ExerciseActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
 
     // Function that sets up the rest view
     private fun setUpRestView() {
+        // Media Player
+        try {
+            player = MediaPlayer.create(applicationContext, R.raw.press_start)
+            player!!.isLooping = false // To play only once
+            player!!.start()
+        } catch (e: Exception) {
+            e.printStackTrace()
+        }
+
         // Move the exercise view away bring the rest view back
         findViewById<LinearLayout>(R.id.exerciseView).visibility = View.GONE
         findViewById<LinearLayout>(R.id.restViewCounter).visibility = View.VISIBLE
-
 
         if (restTimer != null) {
             restTimer!!.cancel()
@@ -171,5 +196,15 @@ class ExerciseActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
 
     private fun speakOut(text: String) {
         txtToSpeech!!.speak(text, TextToSpeech.QUEUE_FLUSH, null, "")
+    }
+
+    // Exercise recycler view to display the current exercise number to the user
+    private fun setUpExerciseRecyclerView() {
+        val exerciseStatusAdapter = findViewById<RecyclerView>(R.id.exerciseStatusRecyclerView)
+        exerciseStatusAdapter.layoutManager =
+            LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
+
+        exerciseAdapter = ExerciseStatusAdapter(exerciseList!!, this)
+        exerciseStatusAdapter.adapter = exerciseAdapter
     }
 }

@@ -1,10 +1,10 @@
-package com.example.a7minutesworkout
+package com.example.a7minutesWorkout
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.LinearLayout
-import android.widget.Toast
+import com.example.a7minutesworkout.R
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

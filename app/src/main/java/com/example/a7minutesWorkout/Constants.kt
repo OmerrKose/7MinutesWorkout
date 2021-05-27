@@ -1,4 +1,6 @@
-package com.example.a7minutesworkout
+package com.example.a7minutesWorkout
+
+import com.example.a7minutesworkout.R
 
 class Constants {
     companion object{

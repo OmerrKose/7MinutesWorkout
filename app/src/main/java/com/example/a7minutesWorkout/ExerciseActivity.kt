@@ -1,8 +1,8 @@
 package com.example.a7minutesWorkout
 
+import android.app.Dialog
 import android.content.Intent
 import android.media.MediaPlayer
-import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.CountDownTimer
@@ -48,7 +48,7 @@ class ExerciseActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
 
         val toolbar = findViewById<androidx.appcompat.widget.Toolbar>(R.id.exerciseActivityToolbar)
         toolbar.setNavigationOnClickListener {
-            onBackPressed()
+            customDialogForBackButton()
         }
 
         txtToSpeech = TextToSpeech(this, this)
@@ -215,5 +215,22 @@ class ExerciseActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
 
         exerciseAdapter = ExerciseStatusAdapter(exerciseList!!, this)
         exerciseStatusAdapter.adapter = exerciseAdapter
+    }
+
+    private fun customDialogForBackButton() {
+        val customDialog = Dialog(this)
+        customDialog.setContentView(R.layout.item_custom_dialog)
+
+        // If "YES" is chosen than finish the activity
+        customDialog.findViewById<Button>(R.id.buttonYes).setOnClickListener {
+            finish()
+            customDialog.dismiss()
+        }
+
+        customDialog.findViewById<Button>(R.id.buttonNo).setOnClickListener {
+            customDialog.dismiss()
+        }
+
+        customDialog.show()
     }
 }

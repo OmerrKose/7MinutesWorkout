@@ -15,13 +15,17 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.7MinutesWorkout">
 
-        <!--FINISH ACTIVITY-->
+        <activity android:name="com.example.a7minutesWorkout.BMIActivity"
+            android:screenOrientation="fullSensor"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"/>
+
+        <!-- FINISH ACTIVITY -->
         <activity
             android:name="com.example.a7minutesWorkout.FinishActivity"
             android:screenOrientation="fullSensor"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
 
-        <!--MAIN ACTIVITY-->
+        <!-- MAIN ACTIVITY -->
         <activity
             android:name="com.example.a7minutesWorkout.MainActivity"
             android:screenOrientation="fullSensor"
@@ -33,7 +37,7 @@
             </intent-filter>
         </activity>
 
-        <!--EXERCISE ACTIVITY-->
+        <!-- EXERCISE ACTIVITY -->
         <activity
             android:name="com.example.a7minutesWorkout.ExerciseActivity"
             android:screenOrientation="fullSensor"

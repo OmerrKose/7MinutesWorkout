@@ -16,4 +16,6 @@
     <string name="yes">YES</string>
     <string name="dialog_warning_text">This will stop the workout. You have come so far are you sure you want to quit.</string>
     <string name="dialog_warning_header">Are you sure?</string>
+    <string name="bmi">BMI</string>
+    <string name="calculator">Calculator</string>
 </resources>

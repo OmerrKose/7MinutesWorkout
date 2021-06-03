@@ -3,7 +3,6 @@ package com.example.a7minutesWorkout
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.Button
 import android.widget.LinearLayout
 import com.example.a7minutesworkout.R
 

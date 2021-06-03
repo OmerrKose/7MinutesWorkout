@@ -14,8 +14,12 @@
     <string name="finish">Finish</string>
     <string name="no">No</string>
     <string name="yes">YES</string>
-    <string name="dialog_warning_text">This will stop the workout. You have come so far are you sure you want to quit.</string>
+    <string name="dialog_warning_text">This will stop the workout. You have come so far are you sure you want to quit?</string>
     <string name="dialog_warning_header">Are you sure?</string>
     <string name="bmi">BMI</string>
     <string name="calculator">Calculator</string>
+    <string name="your_bmi">Your BMI</string>
+    <string name="height_in_cm">HEIGHT (in cm)</string>
+    <string name="weight_in_kg">WEIGHT (in kg)</string>
+    <string name="calculate">Calculate</string>
 </resources>

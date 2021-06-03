@@ -15,4 +15,7 @@
     <color name="toolbarColorControlNormal">#000000</color>
     <color name="progressGrey">#D4DDE7</color>
     <color name="yellow">#FFD700</color>
+    <color name="unselectedRadioGroupColorWhite">#ECEDEF</color>
+    <color name="unselectedRadioGroupColorGray">#9AA2AF</color>
+    <color name="selectedRadioButtonGrey">#ADB3BE</color>
 </resources>

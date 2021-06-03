@@ -18,7 +18,6 @@ class BMIActivity : AppCompatActivity() {
         setContentView(R.layout.activity_bmiactivity)
 
         setSupportActionBar(findViewById(R.id.toolbarBMIActivity))
-
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         supportActionBar?.title = "CALCULATE BMI"
 

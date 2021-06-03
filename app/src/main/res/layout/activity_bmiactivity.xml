@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -9,23 +10,62 @@
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbarBMIActivity"
         android:layout_width="match_parent"
-        android:layout_height="?android:attr/actionBarSize"
-        android:background="@color/white" />
+        android:layout_height="?android:attr/actionBarSize" />
+
+    <RadioGroup
+        android:id="@+id/rgUnits"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/toolbarBMIActivity"
+        android:layout_margin="10dp"
+        android:background="@drawable/drawable_radio_group_tab_background"
+        android:orientation="horizontal">
+
+        <RadioButton
+            android:id="@+id/rbMetricUnits"
+            android:layout_width="0dp"
+            android:layout_height="35dp"
+            android:layout_weight="1"
+            android:background="@drawable/drawable_units_tab_selector"
+            android:button="@null"
+            android:checked="true"
+            android:gravity="center"
+            android:text="@string/metric_units"
+            android:textColor="@drawable/drawable_units_tab_text_color_selector"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+        <RadioButton
+            android:id="@+id/rbImperialUnits"
+            android:layout_width="0dp"
+            android:layout_height="35dp"
+            android:layout_weight="1"
+            android:background="@drawable/drawable_units_tab_selector"
+            android:button="@null"
+            android:checked="false"
+            android:gravity="center"
+            android:text="@string/imperial_units"
+            android:textColor="@drawable/drawable_units_tab_text_color_selector"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+    </RadioGroup>
 
     <LinearLayout
         android:id="@+id/linearLayoutUnitsView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/toolbarBMIActivity"
+        android:layout_below="@+id/rgUnits"
         android:orientation="vertical"
         android:padding="10dp">
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/textInputMetricUnitWeight"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-            <com.google.android.material.textfield.TextInputEditText
+            <androidx.appcompat.widget.AppCompatEditText
                 android:id="@+id/editTextMetricUnitWeight"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -37,11 +77,12 @@
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/textInputMetricUnitHeight"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp">
 
-            <com.google.android.material.textfield.TextInputEditText
+            <androidx.appcompat.widget.AppCompatEditText
                 android:id="@+id/editTextMetricUnitHeight"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

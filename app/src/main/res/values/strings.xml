@@ -22,4 +22,6 @@
     <string name="height_in_cm">HEIGHT (in cm)</string>
     <string name="weight_in_kg">WEIGHT (in kg)</string>
     <string name="calculate">Calculate</string>
+    <string name="metric_units">METRIC UNITS</string>
+    <string name="imperial_units">IMPERIAL UNITS</string>
 </resources>

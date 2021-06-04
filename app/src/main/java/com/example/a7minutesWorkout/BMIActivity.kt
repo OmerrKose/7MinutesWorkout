@@ -1,8 +1,10 @@
 package com.example.a7minutesWorkout
 
+import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import android.view.WindowManager
 import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
@@ -23,6 +25,12 @@ class BMIActivity : AppCompatActivity() {
 
         findViewById<Toolbar>(R.id.toolbarBMIActivity).setNavigationOnClickListener {
             onBackPressed()
+        }
+
+        // Change the color of the status bar
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+            window.statusBarColor = resources.getColor(R.color.colorPrimary);
         }
 
         // CALCULATE BUTTON

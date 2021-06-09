@@ -51,6 +51,7 @@
 
     </RadioGroup>
 
+    <!-- METRIC UNITS -->
     <LinearLayout
         android:id="@+id/linearLayoutUnitsView"
         android:layout_width="match_parent"
@@ -92,6 +93,78 @@
 
         </com.google.android.material.textfield.TextInputLayout>
 
+        <!-- IMPERIAL UNITS -->
+        <LinearLayout
+            android:id="@+id/linearLayoutImperialUnitsView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/textInputImperialUnitsWeight"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <androidx.appcompat.widget.AppCompatEditText
+                    android:id="@+id/editTextImperialUnitWight"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/weight_in_ibs"
+                    android:inputType="numberDecimal"
+                    android:textSize="16sp" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <LinearLayout
+                android:id="@+id/linearLayoutImperialUnitsHeight"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:baselineAligned="false"
+                android:orientation="horizontal"
+                android:visibility="visible">
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/textInputImperialUnitsHeightInch"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1">
+
+                    <androidx.appcompat.widget.AppCompatEditText
+                        android:id="@+id/editTextImperialUnitHeightInch"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/height_in_inches"
+                        android:inputType="number"
+                        android:textSize="16sp" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/textInputImperialUnitsHeightFeet"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="5dp"
+                    android:layout_weight="1">
+
+                    <androidx.appcompat.widget.AppCompatEditText
+                        android:id="@+id/editTextImperialUnitHeightFeet"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/height_in_feet"
+                        android:inputType="number"
+                        android:textSize="16sp" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <!-- RESULTS -->
         <LinearLayout
             android:id="@+id/displayBMIResults"
             android:layout_width="match_parent"
@@ -99,7 +172,7 @@
             android:layout_marginTop="25dp"
             android:orientation="vertical"
             android:visibility="visible"
-            tools:visibility="visible">
+            tools:visibility="invisible">
 
             <TextView
                 android:id="@+id/textViewYourBMI"
@@ -108,8 +181,7 @@
                 android:gravity="center"
                 android:text="@string/your_bmi"
                 android:textAllCaps="true"
-                android:textSize="16sp"
-                android:visibility="invisible" />
+                android:textSize="16sp" />
 
             <TextView
                 android:id="@+id/textViewBMIValue"
@@ -141,18 +213,18 @@
                 android:textStyle="bold"
                 tools:text="Normal" />
 
-            <Button
-                android:id="@+id/buttonCalculateUnits"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="bottom"
-                android:layout_marginTop="35dp"
-                android:backgroundTint="@color/colorAccent"
-                android:text="@string/calculate"
-                android:textColor="@color/white"
-                android:textSize="18sp" />
-
         </LinearLayout>
+
+        <Button
+            android:id="@+id/buttonCalculateUnits"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:layout_marginTop="35dp"
+            android:backgroundTint="@color/colorAccent"
+            android:text="@string/calculate"
+            android:textColor="@color/white"
+            android:textSize="18sp" />
 
     </LinearLayout>
 

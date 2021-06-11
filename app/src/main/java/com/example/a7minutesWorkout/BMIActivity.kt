@@ -39,35 +39,57 @@ class BMIActivity : AppCompatActivity() {
             window.statusBarColor = resources.getColor(R.color.colorPrimary)
         }
 
-        // CALCULATE BUTTON
+        // Calculate Button
         findViewById<Button>(R.id.buttonCalculateUnits).setOnClickListener {
-            if (validateMetricUnits()) {
-                val heightValue: Float =
-                    findViewById<AppCompatEditText>(R.id.editTextMetricUnitHeight).text.toString()
-                        .toFloat() / 100
-                val weightValue: Float =
-                    findViewById<AppCompatEditText>(R.id.editTextMetricUnitWeight).text.toString()
-                        .toFloat()
+            if (currentVisibleView == metricUnitView) {
+                if (validateMetricUnits()) {
+                    val heightValue: Float =
+                        findViewById<AppCompatEditText>(R.id.editTextMetricUnitHeight).text.toString()
+                            .toFloat() / 100
+                    val weightValue: Float =
+                        findViewById<AppCompatEditText>(R.id.editTextMetricUnitWeight).text.toString()
+                            .toFloat()
 
-                val bmi = weightValue / (heightValue * heightValue)
-                displayBMIResults(bmi)
+                    val bmi = weightValue / (heightValue * heightValue)
+                    displayBMIResults(bmi)
+                } else {
+                    Toast.makeText(
+                        this@BMIActivity,
+                        "Please enter valid values",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                }
             } else {
-                Toast.makeText(
-                    this@BMIActivity,
-                    "Please enter valid values",
-                    Toast.LENGTH_SHORT
-                ).show()
+                if (validateImperialUnits()) {
+                    val imperialHeightValueFeet: String =
+                        findViewById<AppCompatEditText>(R.id.editTextImperialUnitHeightFeet).text.toString()
+                    val imperialHeightValueInch: String =
+                        findViewById<AppCompatEditText>(R.id.editTextImperialUnitHeightInch).text.toString()
+                    val imperialWeightValue: Float =
+                        findViewById<AppCompatEditText>(R.id.editTextImperialUnitWeight).text.toString()
+                            .toFloat()
+
+                    val heightValueImperial = imperialHeightValueInch.toFloat() + imperialHeightValueFeet.toFloat() * 12
+                    val bmi = 703 * (imperialWeightValue / (heightValueImperial * heightValueImperial))
+                    displayBMIResults(bmi)
+                } else {
+                    Toast.makeText(
+                        this@BMIActivity,
+                        "Please enter valid values.",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                }
             }
         }
 
         makeMetricUnitsViewVisible()
         findViewById<RadioGroup>(R.id.rgUnits).setOnCheckedChangeListener { _, checkedId ->
-            if(checkedId == R.id.rbMetricUnits)
+            if (checkedId == R.id.rbMetricUnits)
                 makeMetricUnitsViewVisible()
             else
                 makeImperialUnitsViewVisible()
         }
-        
+
 
     }
 
@@ -167,6 +189,22 @@ class BMIActivity : AppCompatActivity() {
                 .isEmpty()
         )
             isValid = false
+
+        return isValid
+    }
+
+    // Function to check if user inputs exist
+    private fun validateImperialUnits(): Boolean {
+        var isValid = true
+
+        when {
+            findViewById<AppCompatEditText>(R.id.editTextImperialUnitWeight).text.toString()
+                .isEmpty() -> isValid = false
+            findViewById<AppCompatEditText>(R.id.editTextImperialUnitHeightInch).text.toString()
+                .isEmpty() -> isValid = false
+            findViewById<AppCompatEditText>(R.id.editTextImperialUnitHeightFeet).text.toString()
+                .isEmpty() -> isValid = false
+        }
 
         return isValid
     }

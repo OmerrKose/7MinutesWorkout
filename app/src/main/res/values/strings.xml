@@ -27,4 +27,5 @@
     <string name="height_in_inches">HEIGHT (in inches)</string>
     <string name="height_in_feet">HEIGHT (in feet)</string>
     <string name="weight_in_ibs">WEIGHT (in Ibs)</string>
+    <string name="history">History</string>
 </resources>

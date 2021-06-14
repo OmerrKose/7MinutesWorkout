@@ -15,18 +15,21 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.7MinutesWorkout">
-
-        <!--BMI ACTIVITY-->
-        <activity android:name="com.example.a7minutesWorkout.BMIActivity"
+        <!-- HISTORY ACTIVITY -->
+        <activity
+            android:name="com.example.a7minutesWorkout.HistoryActivity"
             android:screenOrientation="fullSensor"
             android:theme="@style/Theme.MaterialComponents.Light.NoActionBar" />
-
+        <!-- BMI ACTIVITY -->
+        <activity
+            android:name="com.example.a7minutesWorkout.BMIActivity"
+            android:screenOrientation="fullSensor"
+            android:theme="@style/Theme.MaterialComponents.Light.NoActionBar" />
         <!-- FINISH ACTIVITY -->
         <activity
             android:name="com.example.a7minutesWorkout.FinishActivity"
             android:screenOrientation="fullSensor"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
-
         <!-- MAIN ACTIVITY -->
         <activity
             android:name="com.example.a7minutesWorkout.MainActivity"
@@ -39,7 +42,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <!-- EXERCISE ACTIVITY -->
         <activity
             android:name="com.example.a7minutesWorkout.ExerciseActivity"

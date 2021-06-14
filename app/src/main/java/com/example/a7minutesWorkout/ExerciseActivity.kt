@@ -27,8 +27,8 @@ class ExerciseActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
     // Variables for the exercise count down timer
     private var exerciseTimer: CountDownTimer? = null
     private var exerciseProgress = 0
-    private var exerciseTimerDuration: Long = 30
-    private var restTimerDuration: Long = 10
+    private var exerciseTimerDuration: Long = 1 // Change this while testing init: 30
+    private var restTimerDuration: Long = 1 // Change this while testing init: 10
 
     // Variables to display the moves
     private var exerciseList: ArrayList<ExerciseModel>? = null
